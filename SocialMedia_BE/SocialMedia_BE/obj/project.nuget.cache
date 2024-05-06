@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "F/uQMRb0u18aOd4vWo43LXH/g1IusJTiH30SiL9AWG8Ngitl3gtkmmDIs3EVceHPI8JeoqGLmG7eJGD4Knf/qQ==",
+  "dgSpecHash": "lsOfzjwzPvYtJCSOTl6ww9D36u2Ve0JnYTUvSVtb57Hq7pnKOpDtVTsiLcIol+1jwJCxiZ5g4RA71DnZXTLGWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE.csproj",
   "expectedPackageFiles": [
@@ -80,6 +80,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.4\\microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.4\\microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.4\\microsoft.entityframeworkcore.design.8.0.4.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\8.0.4\\microsoft.entityframeworkcore.inmemory.8.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.4\\microsoft.entityframeworkcore.relational.8.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\8.0.4\\microsoft.entityframeworkcore.sqlserver.8.0.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\8.0.4\\microsoft.entityframeworkcore.tools.8.0.4.nupkg.sha512",

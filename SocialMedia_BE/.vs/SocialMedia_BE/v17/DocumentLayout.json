@@ -9,6 +9,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\models\\socialmediadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\models\\socialmediadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,20 +34,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PostsController.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
-              "RelativeDocumentMoniker": "SocialMedia_BE\\Controllers\\PostsController.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
-              "RelativeToolTip": "SocialMedia_BE\\Controllers\\PostsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T06:24:33.686Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -41,9 +52,74 @@
               "RelativeDocumentMoniker": "SocialMedia_BE\\Models\\Post.cs",
               "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\Post.cs",
               "RelativeToolTip": "SocialMedia_BE\\Models\\Post.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T06:22:45.017Z",
+              "WhenOpened": "2024-05-04T05:13:19.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\Controllers\\PostsController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "SocialMedia_BE\\Controllers\\PostsController.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAgwDoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T04:59:34.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SocialMediaDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\SocialMediaDBContext.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\Models\\SocialMediaDBContext.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\SocialMediaDBContext.cs",
+              "RelativeToolTip": "SocialMedia_BE\\Models\\SocialMediaDBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T04:38:20.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Program.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\Program.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Program.cs",
+              "RelativeToolTip": "SocialMedia_BE\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:56:09.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\appsettings.json",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\appsettings.json",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\appsettings.json",
+              "RelativeToolTip": "SocialMedia_BE\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-03T09:13:25.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ValuesController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\ValuesController.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\Controllers\\ValuesController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\ValuesController.cs",
+              "RelativeToolTip": "SocialMedia_BE\\Controllers\\ValuesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:08:00.178Z",
               "EditorCaption": ""
             }
           ]

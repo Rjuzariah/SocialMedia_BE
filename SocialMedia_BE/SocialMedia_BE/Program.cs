@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using SocialMedia_BE.Data;
+using SocialMedia_BE.Models;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<SocialMedia_BEContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SocialMedia_BEContext") ?? throw new InvalidOperationException("Connection string 'SocialMedia_BEContext' not found.")));
+builder.Services.AddDbContext<SocialMediaDBContext>(opt => opt.UseInMemoryDatabase("SocialMedia"));
+
+//builder.Services.AddDbContext<SocialMedia_BEContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("SocialMedia_BEContext") ?? throw new InvalidOperationException("Connection string 'SocialMedia_BEContext' not found.")));
 
 // Add services to the container.
 

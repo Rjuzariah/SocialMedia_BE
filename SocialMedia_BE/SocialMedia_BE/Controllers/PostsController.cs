@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SocialMedia_BE.Data;
 using SocialMedia_BE.Models;
 
 namespace SocialMedia_BE.Controllers
@@ -14,25 +13,25 @@ namespace SocialMedia_BE.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
-        private readonly SocialMedia_BEContext _context;
+        private readonly SocialMediaDBContext _context;
 
-        public PostsController(SocialMedia_BEContext context)
+        public PostsController(SocialMediaDBContext context)
         {
             _context = context;
         }
 
         // GET: api/Posts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPost()
+        public async Task<ActionResult<IEnumerable<Post>>> GetTodoItems()
         {
-            return await _context.Post.ToListAsync();
+            return await _context.TodoItems.ToListAsync();
         }
 
         // GET: api/Posts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.TodoItems.FindAsync(id);
 
             if (post == null)
             {
@@ -56,6 +55,7 @@ namespace SocialMedia_BE.Controllers
 
             try
             {
+                post.UpdatedDateTime = DateTime.Now;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -78,23 +78,26 @@ namespace SocialMedia_BE.Controllers
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
         {
-            _context.Post.Add(post);
+            _context.TodoItems.Add(post);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPost", new { id = post.Id }, post);
+            post.CreatedDateTime = DateTime.Now;
+            post.UpdatedDateTime = null;
+
+            return CreatedAtAction(nameof(PostPost), new { id = post.Id }, post);
         }
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePost(int id)
         {
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.TodoItems.FindAsync(id);
             if (post == null)
             {
                 return NotFound();
             }
 
-            _context.Post.Remove(post);
+            _context.TodoItems.Remove(post);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +105,7 @@ namespace SocialMedia_BE.Controllers
 
         private bool PostExists(int id)
         {
-            return _context.Post.Any(e => e.Id == id);
+            return _context.TodoItems.Any(e => e.Id == id);
         }
     }
 }

@@ -6,6 +6,6 @@
 		public string? Description { get; set; }
 		public int Owner { get; set; }
 		public DateTime CreatedDateTime { get; set; }
-		public DateTime UpdatedDateTime { get; set; }
+		public DateTime? UpdatedDateTime { get; set; }
 	}
 }
