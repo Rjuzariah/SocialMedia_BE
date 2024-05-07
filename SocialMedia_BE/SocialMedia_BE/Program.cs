@@ -18,6 +18,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDBContext>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin() // Allow requests from any origin
+                   .AllowAnyMethod() // Allow any HTTP method
+                   .AllowAnyHeader(); // Allow any header
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,5 +45,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapSwagger().RequireAuthorization();
+app.UseCors("AllowAll");
 
 app.Run();

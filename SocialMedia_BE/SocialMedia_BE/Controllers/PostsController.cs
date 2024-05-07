@@ -12,7 +12,6 @@ namespace SocialMedia_BE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly SocialMediaDBContext _context;
