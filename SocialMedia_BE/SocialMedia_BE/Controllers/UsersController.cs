@@ -13,8 +13,6 @@ namespace SocialMedia_BE.Controllers
 	[ApiController]
 	public class UsersController : ControllerBase
 	{
-		private readonly UserManager<ApplicationUser> _userManager;
-
 
 		private readonly ApplicationDBContext _dbContext;
 

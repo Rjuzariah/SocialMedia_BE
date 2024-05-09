@@ -28,10 +28,24 @@ namespace SocialMedia_BE.Controllers
 
 		// GET: api/Posts
 		[HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetTodoItems()
         {
-            return await _context.TodoItems.ToListAsync();
-        }
+			var postsWithOwnerNames = await _context.TodoItems
+			.Include(p => p.Owner)
+			.ToListAsync();
+
+			var postsWithOwnerNamesDto = postsWithOwnerNames
+			    .Select(p => new PostDto
+			    {
+				    Id = p.Id,
+				    Description = p.Description,
+				    OwnerName = p.Owner?.UserName, // Assuming UserName is the property representing the owner's name,
+				    CreatedDateTime = p.CreatedDateTime
+			    })
+			    .ToList();
+			return postsWithOwnerNamesDto;
+
+		}
 
 		// GET: api/Posts/countNumberOfPost
 		[HttpGet("CountNumberOfPost")]
@@ -54,42 +68,42 @@ namespace SocialMedia_BE.Controllers
             return post;
         }
 
-        // PUT: api/Posts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPost(int id, Post post)
-        {
-            if (id != post.Id)
-            {
-                return BadRequest();
-            }
+        //// PUT: api/Posts/5
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutPost(int id, Post post)
+        //{
+        //    if (id != post.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(post).State = EntityState.Modified;
+        //    _context.Entry(post).State = EntityState.Modified;
 
-            try
-            {
-                post.UpdatedDateTime = DateTime.Now;
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PostExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        post.UpdatedDateTime = DateTime.Now;
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PostExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/Posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Post>> PostPost(Post post)
+        public async Task<ActionResult<PostDto>> PostPost([FromBody] CreatePost request)
         {
 			ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
 
@@ -105,15 +119,22 @@ namespace SocialMedia_BE.Controllers
 
 			if (userData?.PostLimitNumber > countNumberOfPostPerUser)
 			{
-				post.CreatedDateTime = DateTime.Now;
-				post.UpdatedDateTime = null;
-				post.OwnerId = userId;
+                var postData = new Post();
+				postData.Description = request.Description;
+				postData.CreatedDateTime = DateTime.Now;
+				postData.OwnerId = userId;
 
-				_context.TodoItems.Add(post);
+				_context.TodoItems.Add(postData);
 
 				await _context.SaveChangesAsync();
 
-				return CreatedAtAction(nameof(PostPost), new { id = post.Id }, post);
+                var returnData = new PostDto();
+                returnData.Id = postData.Id;
+                returnData.Description = postData.Description;
+                returnData.CreatedDateTime = postData.CreatedDateTime;
+                returnData.OwnerName = userData.UserName;
+
+				return returnData;
 
 			}
 			else
