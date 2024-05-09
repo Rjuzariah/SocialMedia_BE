@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SocialMedia_BE.DbContexts;
 using SocialMedia_BE.Models;
 
 namespace SocialMedia_BE.Controllers
 {
-	[Authorize]
+    [Authorize]
 	[Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase

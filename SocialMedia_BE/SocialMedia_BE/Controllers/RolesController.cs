@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SocialMedia_BE.Models;
+using SocialMedia_BE.DbContexts;
 
 namespace SocialMedia_BE.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class RolesController : ControllerBase
 	{

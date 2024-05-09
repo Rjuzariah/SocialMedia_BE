@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SocialMedia_BE.Models;
 
 
-namespace SocialMedia_BE.Models
+namespace SocialMedia_BE.DbContexts
 {
     public class SocialMediaDBContext : DbContext
     {
@@ -11,5 +12,5 @@ namespace SocialMedia_BE.Models
         }
 
         public DbSet<Post> TodoItems { get; set; } = null!;
-	}
+    }
 }
