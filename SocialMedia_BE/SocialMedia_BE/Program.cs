@@ -16,8 +16,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
-    .AddEntityFrameworkStores<ApplicationDBContext>();
+builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>()
+	.AddEntityFrameworkStores<ApplicationDBContext>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -29,6 +30,14 @@ builder.Services.AddCors(options =>
         });
 });
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+
+var services = scope.ServiceProvider;
+//RoleInitializer.InitializeAsync(services.GetRequiredService<RoleManager<IdentityRole>>()).Wait();
+//UserInitializer.InitializeAsync(services.GetRequiredService<UserManager<ApplicationUser>>()).Wait();
+DataInitializer.InitializeAsync(services.GetRequiredService<UserManager<ApplicationUser>>(), services.GetRequiredService<RoleManager<IdentityRole>>()).Wait();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
