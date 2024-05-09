@@ -30,9 +30,10 @@ namespace SocialMedia_BE.Controllers
 
 		// GET api/<UsersController>/5
 		[HttpGet("{id}")]
-		public string Get(int id)
+		public async Task<ActionResult<IdentityUser>> Get(string id)
 		{
-			return "value";
+			var user = _dbContext.Users.FindAsync(id);
+			return Ok(user);
 		}
 
 		// POST api/<UsersController>

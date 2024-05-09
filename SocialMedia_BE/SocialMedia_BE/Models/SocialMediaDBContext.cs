@@ -11,5 +11,5 @@ namespace SocialMedia_BE.Models
         }
 
         public DbSet<Post> TodoItems { get; set; } = null!;
-    }
+	}
 }

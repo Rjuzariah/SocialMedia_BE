@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +11,8 @@ using SocialMedia_BE.Models;
 
 namespace SocialMedia_BE.Controllers
 {
-    [Route("api/[controller]")]
+	[Authorize]
+	[Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
@@ -21,15 +23,22 @@ namespace SocialMedia_BE.Controllers
             _context = context;
         }
 
-        // GET: api/Posts
-        [HttpGet]
+		// GET: api/Posts
+		[HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetTodoItems()
         {
             return await _context.TodoItems.ToListAsync();
         }
 
-        // GET: api/Posts/5
-        [HttpGet("{id}")]
+		// GET: api/Posts/countNumberOfPost
+		[HttpGet("CountNumberOfPost")]
+		public async Task<ActionResult<int>> countNumberOfPost()
+		{
+			return await _context.TodoItems.CountAsync();
+		}
+
+		// GET: api/Posts/5
+		[HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
             var post = await _context.TodoItems.FindAsync(id);
@@ -79,11 +88,17 @@ namespace SocialMedia_BE.Controllers
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
         {
-            _context.TodoItems.Add(post);
+			ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            // Retrieve user ID from claims
+            string userId = identity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+			_context.TodoItems.Add(post);
             await _context.SaveChangesAsync();
 
             post.CreatedDateTime = DateTime.Now;
             post.UpdatedDateTime = null;
+            post.OwnerId = userId;
 
             return CreatedAtAction(nameof(PostPost), new { id = post.Id }, post);
         }
