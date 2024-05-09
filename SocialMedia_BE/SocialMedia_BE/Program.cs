@@ -34,8 +34,6 @@ var app = builder.Build();
 using var scope = app.Services.CreateScope();
 
 var services = scope.ServiceProvider;
-//RoleInitializer.InitializeAsync(services.GetRequiredService<RoleManager<IdentityRole>>()).Wait();
-//UserInitializer.InitializeAsync(services.GetRequiredService<UserManager<ApplicationUser>>()).Wait();
 DataInitializer.InitializeAsync(services.GetRequiredService<UserManager<ApplicationUser>>(), services.GetRequiredService<RoleManager<IdentityRole>>()).Wait();
 
 
