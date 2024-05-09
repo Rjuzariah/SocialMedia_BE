@@ -25,34 +25,12 @@ namespace SocialMedia_BE.Controllers
 
 		// GET: api/<UsersController>
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<IdentityUser>>> Get()
+		public async Task<ActionResult<IEnumerable<ApplicationUser>>> Get()
 		{
 			var users = await _dbContext.Users.ToListAsync();
 
 			return Ok(users);
 		}
-
-		//[HttpGet("{userId}")]
-		//public async Task<IActionResult> GetUser(string userId)
-		//{
-		//	var user = await _dbContext.Users.FindAsync(userId);
-		//	if (user == null)
-		//	{
-		//		return NotFound();
-		//	}
-
-		//	var roles = await _dbContext.(user);
-
-		//	var userDto = new
-		//	{
-		//		UserId = user.Id,
-		//		UserName = user.UserName,
-		//		Email = user.Email,
-		//		Roles = roles // Include roles in the response
-		//	};
-
-		//	return Ok(userDto);
-		//}
 
 		// GET api/<UsersController>/5
 		[HttpGet("{id}")]
@@ -72,32 +50,24 @@ namespace SocialMedia_BE.Controllers
 
 			var userDto = new
 			{
-				UserId = user.Id,
+				Id = user.Id,
 				UserName = user.UserName,
-				// Include other user properties as needed
+				Email = user.Email,
+				PostLimitNumber = user.PostLimitNumber,
 				RoleIds = roleIds
 			};
-
-
-			//var user = await _dbContext.Users.FindAsync(id);
-			//var user1 = await _userManager.FindByIdAsync(id);
-
-			//var roles = await _userManager.GetRolesAsync(user1);
-
-			//var roles = await _dbContext.UserRoles
-			//         .Where(ur => ur.UserId == id)
-			//         .Select(ur => ur.RoleId)
-			//         .ToListAsync();
-
-			//user.UserRoles = roles;
 
 			return Ok(userDto);
 		}
 
 		// POST api/<UsersController>
 		[HttpPost]
-		public void Post([FromBody] string value)
+		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUser user)
 		{
+			_dbContext.Users.Add(user);
+			await _dbContext.SaveChangesAsync();
+
+			return CreatedAtAction(nameof(PostUser), new { id = user.Id }, user);
 		}
 
 		// PUT api/<UsersController>/5

@@ -18,10 +18,12 @@ namespace SocialMedia_BE.Controllers
     public class PostsController : ControllerBase
     {
         private readonly SocialMediaDBContext _context;
+        private readonly ApplicationDBContext _appContext;
 
-        public PostsController(SocialMediaDBContext context)
+		public PostsController(SocialMediaDBContext context, ApplicationDBContext appContext)
         {
             _context = context;
+            _appContext = appContext;
         }
 
 		// GET: api/Posts
@@ -91,18 +93,36 @@ namespace SocialMedia_BE.Controllers
         {
 			ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
 
-            // Retrieve user ID from claims
-            string userId = identity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+			// Retrieve user ID from claims
+			string userId = identity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-			_context.TodoItems.Add(post);
-            await _context.SaveChangesAsync();
+			var userData = await _appContext.Users.FindAsync(userId);
+            if (userData == null)
+            {
+                return Unauthorized();
+			}
+			var countNumberOfPostPerUser = _context.TodoItems.Where(x => x.OwnerId == userId).Count();
 
-            post.CreatedDateTime = DateTime.Now;
-            post.UpdatedDateTime = null;
-            post.OwnerId = userId;
+			if (userData?.PostLimitNumber > countNumberOfPostPerUser)
+			{
+				post.CreatedDateTime = DateTime.Now;
+				post.UpdatedDateTime = null;
+				post.OwnerId = userId;
 
-            return CreatedAtAction(nameof(PostPost), new { id = post.Id }, post);
-        }
+				_context.TodoItems.Add(post);
+
+				await _context.SaveChangesAsync();
+
+				return CreatedAtAction(nameof(PostPost), new { id = post.Id }, post);
+
+			}
+			else
+			{
+				return BadRequest(new { status = 400, title = "You already exceed the limit of posting number" });
+			}
+
+
+		}
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]

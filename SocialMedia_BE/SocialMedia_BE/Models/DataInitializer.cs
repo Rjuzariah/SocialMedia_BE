@@ -10,12 +10,13 @@ namespace SocialMedia_BE.Models
 			if (!adminRoleExists)
 			{
 				await roleManager.CreateAsync(new IdentityRole("Admin"));
+				await roleManager.CreateAsync(new IdentityRole("User"));
 			}
 
 			var defaultUser = await userManager.FindByEmailAsync("admin@example.com");
 			if (defaultUser == null)
 			{
-				var newUser = new ApplicationUser { UserName = "admin@example.com", Email = "admin@example.com" };
+				var newUser = new ApplicationUser { UserName = "admin@example.com", Email = "admin@example.com", PostLimitNumber=10 };
 				await userManager.CreateAsync(newUser, "P@ssw0rd");
 
 				await userManager.AddToRoleAsync(newUser, "Admin");
