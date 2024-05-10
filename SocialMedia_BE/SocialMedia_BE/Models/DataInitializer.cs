@@ -7,19 +7,28 @@ namespace SocialMedia_BE.Models
 		public static async Task InitializeAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
 			var adminRoleExists = await roleManager.RoleExistsAsync("Admin");
-			if (!adminRoleExists)
+			var userRoleExists = await roleManager.RoleExistsAsync("User");
+			if (!adminRoleExists && !userRoleExists)
 			{
 				await roleManager.CreateAsync(new IdentityRole("Admin"));
 				await roleManager.CreateAsync(new IdentityRole("User"));
 			}
 
-			var defaultUser = await userManager.FindByEmailAsync("admin@example.com");
+			var defaultAdmin = await userManager.FindByEmailAsync("admin@mail.com");
+			if (defaultAdmin == null)
+			{
+				var newAdmin = new ApplicationUser { UserName = "admin@mail.com", Email = "admin@mail.com", PostLimitNumber=10 };
+				await userManager.CreateAsync(newAdmin, "P@ssw0rd");
+
+				await userManager.AddToRoleAsync(newAdmin, "Admin");
+			}
+			var defaultUser = await userManager.FindByEmailAsync("user@mail.com");
 			if (defaultUser == null)
 			{
-				var newUser = new ApplicationUser { UserName = "admin@example.com", Email = "admin@example.com", PostLimitNumber=10 };
-				await userManager.CreateAsync(newUser, "P@ssw0rd");
+				var newAdmin = new ApplicationUser { UserName = "user@mail.com", Email = "user@mail.com", PostLimitNumber = 10 };
+				await userManager.CreateAsync(newAdmin, "P@ssw0rd");
 
-				await userManager.AddToRoleAsync(newUser, "Admin");
+				await userManager.AddToRoleAsync(newAdmin, "User");
 			}
 		}
 	}

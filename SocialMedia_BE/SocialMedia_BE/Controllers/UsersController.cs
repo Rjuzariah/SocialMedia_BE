@@ -15,10 +15,16 @@ namespace SocialMedia_BE.Controllers
 	{
 
 		private readonly ApplicationDBContext _dbContext;
+		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly RoleManager<IdentityRole> _roleManager;
 
-		public UsersController(ApplicationDBContext dbContext)
+
+		public UsersController(ApplicationDBContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
 			_dbContext = dbContext;
+			_userManager = userManager;
+			_roleManager = roleManager;
+
 		}
 
 		// GET: api/<UsersController>
@@ -70,14 +76,56 @@ namespace SocialMedia_BE.Controllers
 
 		// PUT api/<UsersController>/5
 		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
+		public async Task<ActionResult<ApplicationUser>> Put(string id, ApplicationUserPostPutViewModel userUpdate)
 		{
+			var user = await _userManager.FindByIdAsync(id);
+
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			// Update user data
+			user.Email = userUpdate.Email;
+			user.PostLimitNumber = userUpdate.PostLimitNumber;
+			// Update other properties as needed
+
+			// Remove existing roles
+			var existingRoles = await _userManager.GetRolesAsync(user);
+			await _userManager.RemoveFromRolesAsync(user, existingRoles);
+
+			// Add new roles
+			foreach (var roleId in userUpdate.RoleIds)
+			{
+				var role = await _roleManager.FindByIdAsync(roleId);
+				if (role == null)
+				{
+					// Handle role not found
+					return BadRequest($"Role with ID '{roleId}' not found.");
+				}
+
+				await _userManager.AddToRoleAsync(user, role.Name);
+			}
+
+			var result = await _userManager.UpdateAsync(user);
+			if (!result.Succeeded)
+			{
+				// Handle update failure
+				return BadRequest(result.Errors);
+			}
+
+			return NoContent();
 		}
 
 		// DELETE api/<UsersController>/5
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
+		}
+
+		private bool DataExists(string id)
+		{
+			return _dbContext.Users.Any(e => e.Id == id);
 		}
 	}
 }
