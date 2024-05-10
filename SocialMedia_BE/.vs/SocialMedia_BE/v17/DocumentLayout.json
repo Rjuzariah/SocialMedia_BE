@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\models\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\models\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\models\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\models\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|c:\\users\\lenovo\\documents\\synergy\\socialmedia_be\\socialmedia_be\\socialmedia_be\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5389D0C0-DA7A-49D6-A9FC-A0B29CE8071D}|SocialMedia_BE\\SocialMedia_BE.csproj|solutionrelative:socialmedia_be\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,49 +26,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 198,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\DataInitializer.cs",
-              "RelativeDocumentMoniker": "SocialMedia_BE\\Models\\DataInitializer.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\DataInitializer.cs",
-              "RelativeToolTip": "SocialMedia_BE\\Models\\DataInitializer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T03:02:27.6Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PostsController.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
-              "RelativeDocumentMoniker": "SocialMedia_BE\\Controllers\\PostsController.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\PostsController.cs",
-              "RelativeToolTip": "SocialMedia_BE\\Controllers\\PostsController.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAIwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T02:54:14.161Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "SocialMedia_BE\\Models\\ApplicationUser.cs",
               "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\ApplicationUser.cs",
               "RelativeToolTip": "SocialMedia_BE\\Models\\ApplicationUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBQAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T02:50:23.119Z",
+              "WhenOpened": "2024-05-10T05:37:18.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\Models\\ApplicationRole.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Models\\ApplicationRole.cs",
+              "RelativeToolTip": "SocialMedia_BE\\Models\\ApplicationRole.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T05:37:13.821Z",
               "EditorCaption": ""
             },
             {
@@ -79,9 +62,26 @@
               "RelativeDocumentMoniker": "SocialMedia_BE\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\Controllers\\UsersController.cs",
               "RelativeToolTip": "SocialMedia_BE\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAwwEYAAAAkAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAApwHUAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T02:46:43.273Z",
+              "WhenOpened": "2024-05-10T05:32:23.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\DbContexts\\ApplicationDBContext.cs",
+              "RelativeDocumentMoniker": "SocialMedia_BE\\DbContexts\\ApplicationDBContext.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\Synergy\\SocialMedia_BE\\SocialMedia_BE\\SocialMedia_BE\\DbContexts\\ApplicationDBContext.cs",
+              "RelativeToolTip": "SocialMedia_BE\\DbContexts\\ApplicationDBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T05:32:17.703Z",
               "EditorCaption": ""
             }
           ]

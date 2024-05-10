@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialMedia_BE.DbContexts;
 using SocialMedia_BE.Models;
+using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,17 +41,9 @@ namespace SocialMedia_BE.Controllers
 		[HttpGet("{id}")]
 		public async Task<ActionResult> Get(string id)
 		{
-			var user = await _dbContext.Users.FindAsync(id);
-			if (user == null)
-			{
-				return NotFound();
-			}
 
-			// Query role IDs associated with the user directly from DbContext
-			var roleIds = await _dbContext.UserRoles
-				.Where(ur => ur.UserId == id)
-				.Select(ur => ur.RoleId)
-				.ToListAsync();
+			var user = await _userManager.FindByIdAsync(id);
+			var existingRoles = await _userManager.GetRolesAsync(user);
 
 			var userDto = new
 			{
@@ -58,7 +51,7 @@ namespace SocialMedia_BE.Controllers
 				UserName = user.UserName,
 				Email = user.Email,
 				PostLimitNumber = user.PostLimitNumber,
-				RoleIds = roleIds
+				Roles = existingRoles
 			};
 
 			return Ok(userDto);
@@ -80,21 +73,8 @@ namespace SocialMedia_BE.Controllers
 				return BadRequest(result.Errors);
 			}
 
-			foreach (var roleId in userCreate.RoleIds)
-			{
-				var role = await _roleManager.FindByIdAsync(roleId);
-				if (role == null)
-				{
-					// Handle role not found
-					return BadRequest($"Role with ID '{roleId}' not found.");
-				}
-
-				await _userManager.AddToRoleAsync(user, role.Name);
-			}
-
-
-			//	_dbContext.Users.Add(user);
-			//await _dbContext.SaveChangesAsync();
+			//Assign user to roles
+			await _userManager.AddToRolesAsync(user, userCreate.Roles);
 
 			return CreatedAtAction(nameof(PostUser), new { id = user.Id }, user);
 		}
@@ -134,18 +114,8 @@ namespace SocialMedia_BE.Controllers
 			var existingRoles = await _userManager.GetRolesAsync(user);
 			await _userManager.RemoveFromRolesAsync(user, existingRoles);
 
-			// Add new roles
-			foreach (var roleId in userUpdate.RoleIds)
-			{
-				var role = await _roleManager.FindByIdAsync(roleId);
-				if (role == null)
-				{
-					// Handle role not found
-					return BadRequest($"Role with ID '{roleId}' not found.");
-				}
-
-				await _userManager.AddToRoleAsync(user, role.Name);
-			}
+			//Assign user to roles
+			await _userManager.AddToRolesAsync(user, userUpdate.Roles);
 
 			var result = await _userManager.UpdateAsync(user);
 			if (!result.Succeeded)
