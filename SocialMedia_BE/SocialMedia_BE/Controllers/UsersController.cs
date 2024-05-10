@@ -66,10 +66,35 @@ namespace SocialMedia_BE.Controllers
 
 		// POST api/<UsersController>
 		[HttpPost]
-		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUser user)
+		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUserPostPutViewModel userCreate)
 		{
-			_dbContext.Users.Add(user);
-			await _dbContext.SaveChangesAsync();
+			var user = new ApplicationUser();
+			user.UserName = userCreate.UserName;
+			user.Email = userCreate.Email;
+			user.PostLimitNumber = userCreate.PostLimitNumber;
+
+			var result = await _userManager.CreateAsync(user, userCreate.Password);
+			if (!result.Succeeded)
+			{
+				// Handle update failure
+				return BadRequest(result.Errors);
+			}
+
+			foreach (var roleId in userCreate.RoleIds)
+			{
+				var role = await _roleManager.FindByIdAsync(roleId);
+				if (role == null)
+				{
+					// Handle role not found
+					return BadRequest($"Role with ID '{roleId}' not found.");
+				}
+
+				await _userManager.AddToRoleAsync(user, role.Name);
+			}
+
+
+			//	_dbContext.Users.Add(user);
+			//await _dbContext.SaveChangesAsync();
 
 			return CreatedAtAction(nameof(PostUser), new { id = user.Id }, user);
 		}
@@ -86,9 +111,24 @@ namespace SocialMedia_BE.Controllers
 			}
 
 			// Update user data
+			user.UserName = userUpdate.UserName;
 			user.Email = userUpdate.Email;
 			user.PostLimitNumber = userUpdate.PostLimitNumber;
-			// Update other properties as needed
+
+			//change passowrd
+			if (userUpdate.Password != "")
+			{
+				var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+				var changePasswordResult = await _userManager.ResetPasswordAsync(user, token, userUpdate.Password);
+				if (!changePasswordResult.Succeeded)
+				{
+					foreach (var error in changePasswordResult.Errors)
+					{
+						ModelState.AddModelError("", error.Description);
+					}
+					return BadRequest(ModelState);
+				}
+			}
 
 			// Remove existing roles
 			var existingRoles = await _userManager.GetRolesAsync(user);

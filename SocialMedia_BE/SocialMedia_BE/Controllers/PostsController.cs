@@ -30,22 +30,37 @@ namespace SocialMedia_BE.Controllers
 		[HttpGet]
         public async Task<ActionResult<IEnumerable<PostDto>>> GetTodoItems()
         {
-			var postsWithOwnerNames = await _context.TodoItems
-			.Include(p => p.Owner)
-			.ToListAsync();
+            var postsWithOwnerNames = await _context.TodoItems
+            .Include(p => p.Owner)
+            .ToListAsync();
+
+            //var postsWithOwnerNamesDto = postsWithOwnerNames
+            //    .Select(p => new PostDto
+            //    {
+            //        Id = p.Id,
+            //        Description = p.Description,
+            //        OwnerName = p.Owner?.UserName,
+            //        CreatedDateTime = p.CreatedDateTime
+            //    })
+            //    .ToList();
+
+            foreach (var post in postsWithOwnerNames)
+			{
+				_context.Entry(post).Reference(p => p.Owner).Load();
+			}
 
 			var postsWithOwnerNamesDto = postsWithOwnerNames
-			    .Select(p => new PostDto
-			    {
-				    Id = p.Id,
-				    Description = p.Description,
-				    OwnerName = p.Owner?.UserName, // Assuming UserName is the property representing the owner's name,
-				    CreatedDateTime = p.CreatedDateTime
-			    })
-			    .ToList();
+				.Select(p => new PostDto
+				{
+					Id = p.Id,
+					Description = p.Description,
+					OwnerName = p.Owner?.UserName,
+					CreatedDateTime = p.CreatedDateTime
+				})
+				.ToList();
 			return postsWithOwnerNamesDto;
 
-		}
+        }
 
 		// GET: api/Posts/countNumberOfPost
 		[HttpGet("CountNumberOfPost")]
@@ -122,9 +137,10 @@ namespace SocialMedia_BE.Controllers
                 var postData = new Post();
 				postData.Description = request.Description;
 				postData.CreatedDateTime = DateTime.Now;
-				postData.OwnerId = userId;
+                postData.OwnerId = userData.Id;
+                //postData.Owner = userData;
 
-				_context.TodoItems.Add(postData);
+                _context.TodoItems.Add(postData);
 
 				await _context.SaveChangesAsync();
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialMedia_BE.Models
 {
@@ -7,6 +8,7 @@ namespace SocialMedia_BE.Models
 		[Key]
 		public int Id { get; set; }
 		public string? Description { get; set; }
+
 		public string? OwnerId { get; set; }
 		public DateTime CreatedDateTime { get; set; }
 		public ApplicationUser Owner { get; set; }

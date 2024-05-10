@@ -17,7 +17,7 @@ namespace SocialMedia_BE.Models
 			var defaultAdmin = await userManager.FindByEmailAsync("admin@mail.com");
 			if (defaultAdmin == null)
 			{
-				var newAdmin = new ApplicationUser { UserName = "admin@mail.com", Email = "admin@mail.com", PostLimitNumber=10 };
+				var newAdmin = new ApplicationUser { UserName = "admin", Email = "admin@mail.com", PostLimitNumber=10 };
 				await userManager.CreateAsync(newAdmin, "P@ssw0rd");
 
 				await userManager.AddToRoleAsync(newAdmin, "Admin");
@@ -25,7 +25,7 @@ namespace SocialMedia_BE.Models
 			var defaultUser = await userManager.FindByEmailAsync("user@mail.com");
 			if (defaultUser == null)
 			{
-				var newAdmin = new ApplicationUser { UserName = "user@mail.com", Email = "user@mail.com", PostLimitNumber = 10 };
+				var newAdmin = new ApplicationUser { UserName = "user", Email = "user@mail.com", PostLimitNumber = 10 };
 				await userManager.CreateAsync(newAdmin, "P@ssw0rd");
 
 				await userManager.AddToRoleAsync(newAdmin, "User");
