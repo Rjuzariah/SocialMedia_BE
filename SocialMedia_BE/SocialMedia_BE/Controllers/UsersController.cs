@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SocialMedia_BE.DbContexts;
 using SocialMedia_BE.Models;
 using System.Data;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -51,6 +52,33 @@ namespace SocialMedia_BE.Controllers
 				UserName = user.UserName,
 				Email = user.Email,
 				PostLimitNumber = user.PostLimitNumber,
+				Roles = existingRoles
+			};
+
+			return Ok(userDto);
+		}
+
+		[HttpGet("GetLoginUser")]
+		public async Task<ActionResult> GetLoginUser()
+		{
+			ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
+
+			// Retrieve user ID from claims
+			string userId = identity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+			var user = await _userManager.FindByIdAsync(userId);
+
+			if (user == null)
+			{
+				return Unauthorized();
+			}
+
+			var existingRoles = await _userManager.GetRolesAsync(user);
+
+			var userDto = new
+			{
+				Id = user.Id,
+				UserName = user.UserName,
 				Roles = existingRoles
 			};
 
