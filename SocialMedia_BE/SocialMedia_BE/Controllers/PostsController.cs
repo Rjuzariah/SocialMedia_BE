@@ -12,7 +12,7 @@ using SocialMedia_BE.Models;
 
 namespace SocialMedia_BE.Controllers
 {
-    [Authorize]
+    
 	[Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
@@ -28,21 +28,12 @@ namespace SocialMedia_BE.Controllers
 
 		// GET: api/Posts
 		[HttpGet]
-        public async Task<ActionResult<IEnumerable<PostDto>>> GetPosts()
+		[Authorize]
+		public async Task<ActionResult<IEnumerable<PostDto>>> GetPosts()
         {
             var postsWithOwnerNames = await _context.Posts
             .Include(p => p.Owner)
             .ToListAsync();
-
-            //var postsWithOwnerNamesDto = postsWithOwnerNames
-            //    .Select(p => new PostDto
-            //    {
-            //        Id = p.Id,
-            //        Description = p.Description,
-            //        OwnerName = p.Owner?.UserName,
-            //        CreatedDateTime = p.CreatedDateTime
-            //    })
-            //    .ToList();
 
             foreach (var post in postsWithOwnerNames)
 			{
@@ -63,6 +54,7 @@ namespace SocialMedia_BE.Controllers
         }
 
 		// GET: api/Posts/countNumberOfPost
+		[Authorize(Roles = "Admin")]
 		[HttpGet("CountNumberOfPost")]
 		public async Task<ActionResult<int>> countNumberOfPost()
 		{
@@ -71,7 +63,8 @@ namespace SocialMedia_BE.Controllers
 
 		// GET: api/Posts/5
 		[HttpGet("{id}")]
-        public async Task<ActionResult<Post>> GetPost(int id)
+		[Authorize]
+		public async Task<ActionResult<Post>> GetPost(int id)
         {
             var post = await _context.Posts.FindAsync(id);
 
@@ -83,42 +76,11 @@ namespace SocialMedia_BE.Controllers
             return post;
         }
 
-        //// PUT: api/Posts/5
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutPost(int id, Post post)
-        //{
-        //    if (id != post.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(post).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        post.UpdatedDateTime = DateTime.Now;
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!PostExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
         // POST: api/Posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<PostDto>> PostPost([FromBody] CreatePost request)
+		[Authorize]
+		public async Task<ActionResult<PostDto>> PostPost([FromBody] CreatePost request)
         {
 			ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
 
@@ -163,7 +125,8 @@ namespace SocialMedia_BE.Controllers
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePost(int id)
+		[Authorize]
+		public async Task<IActionResult> DeletePost(int id)
         {
             var post = await _context.Posts.FindAsync(id);
             if (post == null)
