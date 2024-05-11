@@ -93,9 +93,8 @@ namespace SocialMedia_BE.Controllers
 		}
 
 		// POST api/<UsersController>
-		[Authorize(Roles = "Admin")]
 		[HttpPost]
-		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUserPostPutViewModel userCreate)
+		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUserPostViewModel userCreate)
 		{
 			var user = new ApplicationUser();
 			user.UserName = userCreate.UserName;
@@ -118,7 +117,7 @@ namespace SocialMedia_BE.Controllers
 		// PUT api/<UsersController>/5
 		[Authorize(Roles = "Admin")]
 		[HttpPut("{id}")]
-		public async Task<ActionResult<ApplicationUser>> Put(string id, ApplicationUserPostPutViewModel userUpdate)
+		public async Task<ActionResult<ApplicationUser>> Put(string id, ApplicationUserPutViewModel userUpdate)
 		{
 			var user = await _userManager.FindByIdAsync(id);
 

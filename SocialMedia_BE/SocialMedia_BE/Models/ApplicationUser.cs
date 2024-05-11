@@ -11,7 +11,18 @@ namespace SocialMedia_BE.Models
 
 	}
 
-	public class ApplicationUserPostPutViewModel
+	public class ApplicationUserPostViewModel
+	{
+		public string? UserName { get; set; }
+		public string? Email { get; set; }
+		public string? Password { get; set; }
+		public int PostLimitNumber { get; set; }
+		public List<string> Roles { get; set; }
+
+
+	}
+
+	public class ApplicationUserPutViewModel
 	{
 		public string? Id { get; set; } = default!;
 		public string? UserName { get; set; }
