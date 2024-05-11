@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialMedia_BE.DbContexts;
@@ -11,7 +12,8 @@ using System.Security.Claims;
 namespace SocialMedia_BE.Controllers
 
 {
-    [Route("api/[controller]")]
+	
+	[Route("api/[controller]")]
 	[ApiController]
 	public class UsersController : ControllerBase
 	{
@@ -19,17 +21,20 @@ namespace SocialMedia_BE.Controllers
 		private readonly ApplicationDBContext _dbContext;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly SignInManager<ApplicationUser> _signInManager;
 
 
-		public UsersController(ApplicationDBContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+		public UsersController(ApplicationDBContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
 		{
 			_dbContext = dbContext;
 			_userManager = userManager;
 			_roleManager = roleManager;
+			_signInManager = signInManager;
 
 		}
 
 		// GET: api/<UsersController>
+		[Authorize(Roles = "Admin")]
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<ApplicationUser>>> Get()
 		{
@@ -39,6 +44,7 @@ namespace SocialMedia_BE.Controllers
 		}
 
 		// GET api/<UsersController>/5
+		[Authorize(Roles = "Admin")]
 		[HttpGet("{id}")]
 		public async Task<ActionResult> Get(string id)
 		{
@@ -58,6 +64,7 @@ namespace SocialMedia_BE.Controllers
 			return Ok(userDto);
 		}
 
+		[Authorize]
 		[HttpGet("GetLoginUser")]
 		public async Task<ActionResult> GetLoginUser()
 		{
@@ -86,6 +93,7 @@ namespace SocialMedia_BE.Controllers
 		}
 
 		// POST api/<UsersController>
+		[Authorize(Roles = "Admin")]
 		[HttpPost]
 		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUserPostPutViewModel userCreate)
 		{
@@ -108,6 +116,7 @@ namespace SocialMedia_BE.Controllers
 		}
 
 		// PUT api/<UsersController>/5
+		[Authorize(Roles = "Admin")]
 		[HttpPut("{id}")]
 		public async Task<ActionResult<ApplicationUser>> Put(string id, ApplicationUserPostPutViewModel userUpdate)
 		{
@@ -153,6 +162,19 @@ namespace SocialMedia_BE.Controllers
 			}
 
 			return NoContent();
+		}
+
+		[HttpPost("Logout")]
+		[Authorize] // Ensure the user is authenticated
+		public async Task<IActionResult> Logout()
+		{
+			// Perform any necessary cleanup or logout actions
+			// For example, clearing authentication tokens or cookies
+
+			await _signInManager.SignOutAsync();
+
+			return Ok(new { message = "Logout successful" });
+
 		}
 
 		// DELETE api/<UsersController>/5

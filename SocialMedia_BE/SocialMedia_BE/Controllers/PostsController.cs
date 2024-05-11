@@ -28,9 +28,9 @@ namespace SocialMedia_BE.Controllers
 
 		// GET: api/Posts
 		[HttpGet]
-        public async Task<ActionResult<IEnumerable<PostDto>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetPosts()
         {
-            var postsWithOwnerNames = await _context.TodoItems
+            var postsWithOwnerNames = await _context.Posts
             .Include(p => p.Owner)
             .ToListAsync();
 
@@ -66,14 +66,14 @@ namespace SocialMedia_BE.Controllers
 		[HttpGet("CountNumberOfPost")]
 		public async Task<ActionResult<int>> countNumberOfPost()
 		{
-			return await _context.TodoItems.CountAsync();
+			return await _context.Posts.CountAsync();
 		}
 
 		// GET: api/Posts/5
 		[HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
-            var post = await _context.TodoItems.FindAsync(id);
+            var post = await _context.Posts.FindAsync(id);
 
             if (post == null)
             {
@@ -130,7 +130,7 @@ namespace SocialMedia_BE.Controllers
             {
                 return Unauthorized();
 			}
-			var countNumberOfPostPerUser = _context.TodoItems.Where(x => x.OwnerId == userId).Count();
+			var countNumberOfPostPerUser = _context.Posts.Where(x => x.OwnerId == userId).Count();
 
 			if (userData?.PostLimitNumber > countNumberOfPostPerUser)
 			{
@@ -140,7 +140,7 @@ namespace SocialMedia_BE.Controllers
                 postData.OwnerId = userData.Id;
                 //postData.Owner = userData;
 
-                _context.TodoItems.Add(postData);
+                _context.Posts.Add(postData);
 
 				await _context.SaveChangesAsync();
 
@@ -165,13 +165,13 @@ namespace SocialMedia_BE.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePost(int id)
         {
-            var post = await _context.TodoItems.FindAsync(id);
+            var post = await _context.Posts.FindAsync(id);
             if (post == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(post);
+            _context.Posts.Remove(post);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -179,7 +179,7 @@ namespace SocialMedia_BE.Controllers
 
         private bool PostExists(int id)
         {
-            return _context.TodoItems.Any(e => e.Id == id);
+            return _context.Posts.Any(e => e.Id == id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,8 @@ using SocialMedia_BE.DbContexts;
 
 namespace SocialMedia_BE.Controllers
 {
-    [Route("api/[controller]")]
+	[Authorize(Roles = "Admin")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class RolesController : ControllerBase
 	{

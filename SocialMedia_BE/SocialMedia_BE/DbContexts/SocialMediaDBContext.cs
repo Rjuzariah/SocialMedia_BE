@@ -11,6 +11,6 @@ namespace SocialMedia_BE.DbContexts
         {
         }
 
-        public DbSet<Post> TodoItems { get; set; } = null!;
+        public DbSet<Post> Posts { get; set; } = null!;
     }
 }
