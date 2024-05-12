@@ -34,8 +34,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 198,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -59,12 +63,7 @@
               "RelativeToolTip": "SocialMedia_BE\\Models\\ApplicationUser.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAgwA0AAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T18:07:40.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "WhenOpened": "2024-05-11T18:07:40.198Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "SocialMedia_BE\\Controllers\\MAUController.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T16:50:17.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T16:50:17.461Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "SocialMedia_BE\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAAewGcAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T16:50:03.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T16:50:03.818Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "SocialMedia_BE\\Controllers\\RolesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T16:48:41.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T16:48:41.459Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "SocialMedia_BE\\Controllers\\PostsController.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAB0AAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T16:45:36.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T16:45:36.673Z"
             }
           ]
         }
